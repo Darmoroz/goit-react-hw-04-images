@@ -1,28 +1,14 @@
-// import PropTypes from 'prop-types';
-import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-export class App extends Component {
-  state = {
-    searchQuery: '',
-    image: [],
-    page: '',
-  };
-  // componentDidMount() {}
-  // componentWillUnmount() {}
-  // componentDidUpdate() {}
+import { useState } from 'react';
 
-  handleSubmit = search => {
-    this.setState({ searchQuery: search.trim() });
-  };
+export const App = () => {
+  const [query, setQuery] = useState('');
 
-  render() {
-    const { searchQuery } = this.state;
-    return (
-      <>
-        <Searchbar onSubmit={this.handleSubmit} />
-        {searchQuery && <ImageGallery searchQuery={searchQuery} />}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Searchbar onSubmit={setQuery} />
+      {query && <ImageGallery query={query.trim()} />}
+    </>
+  );
+};
