@@ -104,7 +104,7 @@ export const ImageGallery = ({ query }) => {
         <Button
           loadMore={() => {
             setStatus(Status.PENDING);
-            setPage(page + 1);
+            setPage(page => page + 1);
           }}
         />
       )}
